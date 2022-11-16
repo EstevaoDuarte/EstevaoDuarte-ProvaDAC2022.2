@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<h:title>JOGANDO O MAIOR</h:title>
+</h:head>
+<h:body>
+	<h:form id="formulario">
+		<p:messages id="mensagem" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+
+		<p:panel header="ListaJogo">
+			<p:link outcome="index" value="voltar" />
+
+
+			<p:dataTable value="#{jogoBean.lista}" var="jogo" editable="true">
+				<p:ajax event="rowEdit" listener="#{jogoBean.editar}"
+					update=":formulario:mensagem" />
+				<p:ajax event="rowEditCancel" listener="#{jogoBean.cancelar}"
+					update=":formulario:mensagem" />
+
+
+				<p:column headerText="id">
+					<p:outputLabel value="#{jogo.id}" />
+				</p:column>
+
+
+
+				<p:column headerText="v1">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v1}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText id="v1" value="#{jogo.v1}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="v2">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v2}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText id="v2" value="#{jogo.v2}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="v3">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v3}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText id="v3" value="#{jogo.v3}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="v4">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v4}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText id="v4" value="#{jogo.v4}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="v5">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{jogo.v5}" />
+						</f:facet>
+
+						<f:facet name="input">
+							<p:inputText id="v5" value="#{jogo.v5}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Data">
+					<p:outputLabel value="#{jogo.dataCadastro}" />
+				</p:column>
+				
+				
+				<p:column headerText="Excluir">
+					<p:commandButton value="Excluir" action="#{jogoBean.excluir(jogo)}" update="formulario"/>
+				</p:column>
+
+				<p:column headerText="Editar">
+					<p:rowEditor editTitle="Editando" cancelTitle="Cancelando"
+						saveTitle="Salvando" />
+				</p:column>
+
+
+				<!--
+						  <p:commandButton value="Editar" action="#{jogoBean.excluir}">
+							<f:setPropertyActionListener value="#{jogo}" target="#{jogoBean.jogo}"/>
+						</p:commandButton>
+						 -->
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</h:body>
+</h:html>
