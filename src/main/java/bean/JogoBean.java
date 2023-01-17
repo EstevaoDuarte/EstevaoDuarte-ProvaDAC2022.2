@@ -26,20 +26,14 @@ public class JogoBean {
 
 		return null;
 	}
-	/*
-	 * public String editar() { try { JogoDAO.editar(jogo);
-	 * addInfoMessage("Sucesso", "Alteração concluída"); jogo = new Jogo(); } catch
-	 * (Exception e) { addErrorMessage("Erro", "Modificação Cancelada"); }
-	 * 
-	 * return null; }
-	 */
+	
 
 	public void editar(RowEditEvent<Jogo> event) {
 		try {
 			JogoDAO.editar(event.getObject());
-			addInfoMessage("Sucesso", "Edição Concluida");
+			addInfoMessage("Sucesso", "EdiÃ§Ã£o Concluida");
 		} catch (Exception e) {
-			addErrorMessage("Erro", "Não foi possível alterar, tente novamente...");
+			addErrorMessage("Erro", "NÃ£o foi possÃ­vel alterar, tente novamente...");
 		}
 
 	}
@@ -53,7 +47,7 @@ public class JogoBean {
 		try {
 			addInfoMessage("Sucesso", "jogo deletado...");
 		} catch (Exception e) {
-			addErrorMessage("Erro", "não foi possível deletar...");
+			addErrorMessage("Erro", "nÃ£o foi possÃ­vel deletar...");
 		}
 		JogoDAO.excluir(jogo);
 		lista = JogoDAO.listar();
